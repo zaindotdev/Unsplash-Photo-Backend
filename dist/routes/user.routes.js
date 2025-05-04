@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { registerUser, addFavourites, getAllUsers, getCurrentUser, loginUser, logoutUser } from "../controllers/user.controller.js";
+import { Auth } from "../middlewares/auth.js";
+const router = Router();
+router.post("/register", registerUser);
+router.post("/login", loginUser);
+router.post("/logout", logoutUser);
+router.post("/addFavourites", Auth, addFavourites);
+router.get("/getAllUsers", Auth, getAllUsers);
+router.get("/getCurrentUser", Auth, getCurrentUser);
+export default router;
